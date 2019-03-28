@@ -1,3 +1,4 @@
 [instances]
-instance1  ansible_user=ec2-user ansible_ssh_private_key_file=instance1key.pem
-instance2  ansible_user=ec2-user ansible_ssh_private_key_file=instance2.pem
+instance1 
+instance2  
+instance3
