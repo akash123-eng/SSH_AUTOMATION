@@ -1,0 +1,41 @@
+- name: Add a new user
+  user:
+    name: "{{ user_name }}"
+    password: user5678
+    shell: /bin/bash
+  tags:
+    - add
+#- name: Add a new users
+#  local_action: 
+#   file:
+#      path: /home/{{ user_name }}/
+#      state: directory
+#   command : ssh-keygen -C {{ user_name }} -f /home/{{ user_name }}/{{ user_name }}
+#  tags:
+#    - grant
+
+#- name: Give SSH access
+#  shell : sshpass -p user5678 ssh-copy-id -i /tmp/{{ user_name }}/{{ user_name }}.pub 
+
+- name: Give SSH access
+  authorized_key:
+    user: "{{ user_name }}"
+    state: present
+    key: "{{ lookup('file', '/tmp/{{ user_name }}/id_rsa.pub') }}"
+  tags:
+    - grant
+
+#- name: Copy SSH public key to remote
+#  copy:
+#    src: new1.pub 
+#    dest: /tmp/{{ user_name }}/id_rsa.pub
+#    force : yes
+#  tags:
+#    - grant
+
+#- name : append
+#  command : cat /tmp/{{ user_name }}/id_rsa.pub >>  ~/.ssh/authorized_keys
+#  lineinfile
+#    key: "{{ lookup('file', '../../../sshkeys/{{ user_name }}/id_rsa.pub') }}"
+#  tags:
+#   - grant

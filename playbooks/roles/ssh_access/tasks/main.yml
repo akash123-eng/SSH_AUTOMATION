@@ -1,0 +1,11 @@
+- name: generate ssh-keys
+  import_tasks: keys.yml
+  when: action == "grant"
+
+- name: Include add user
+  import_tasks: access_grant.yml
+  when: action == "grant"
+ 
+- name: Include remove user
+  import_tasks: access_revoke.yml
+  when: action == "revoke"
