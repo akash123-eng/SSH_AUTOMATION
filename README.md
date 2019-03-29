@@ -7,3 +7,9 @@
 2)To Revoke SSH access of a user use following command :  
 
      ansible-playbook -i hosts -e "action=revoke" playbooks/task.yml
+     
+
+2)To Rsmove user use following command :  
+
+     ansible-playbook -i hosts -e "action=remove" playbooks/task.yml
+     
