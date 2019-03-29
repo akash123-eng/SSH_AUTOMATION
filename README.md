@@ -9,7 +9,7 @@
      ansible-playbook -i hosts -e "action=revoke" playbooks/task.yml
      
 
-2)To Rsmove user use following command :  
+2)To Remove user use following command :  
 
      ansible-playbook -i hosts -e "action=remove" playbooks/task.yml
      
