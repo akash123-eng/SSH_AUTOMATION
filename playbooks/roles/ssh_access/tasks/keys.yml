@@ -1,5 +1,5 @@
 - name: Adding user to master server
-  local_action: shell useradd  "{{ user_name }}" && echo "{{ user_name }}":user5678 | chpasswd
+  local_action: shell useradd  "{{ user_name }}" && echo "{{ user_name }}":user5678 | chpasswd && mkdir -p /home/{{ user_name }}/.ssh && chown -R "{{ user_name }}" /home/{{ user_name }}/.ssh
   tags:
    - grant
 
